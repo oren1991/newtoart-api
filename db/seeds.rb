@@ -7,5 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.create(name: 'Hello User')
+user2 = User.create(name: 'World User')
 role = Role.create(name: 'Admin', admin: true)
+like = Like.create(likable: user2)
 user.roles << role
+user2.roles << role
+user.liked << like

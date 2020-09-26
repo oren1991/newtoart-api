@@ -3,4 +3,6 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :users_roles, class_name: 'UsersRoles'
   has_many :roles, through: :users_roles
+  has_many :likes, as: :likable
+  has_many :liked, class_name: 'Like'
 end

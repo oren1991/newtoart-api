@@ -4,4 +4,5 @@ class Review < ApplicationRecord
   has_many :reviews_properties, class_name: 'ReviewsProperties'
   has_many :properties, through: :reviews_properties
   has_many :comments, as: :commentable
+  has_many :likes, as: :likable
 end
