@@ -13,3 +13,11 @@ like = Like.create(likable: user2)
 user.roles << role
 user2.roles << role
 user.liked << like
+
+Property.create(property_type: 'form', icon: 'shapes', description: 'random description', admin: user)
+Property.create(property_type: 'perpective', icon: 'cube', description: 'random description', admin: user)
+Property.create(property_type: 'values', icon: 'adjust', description: 'random description', admin: user)
+Property.create(property_type: 'composition', icon: 'theater-masks', description: 'random description', admin: user)
+Property.create(property_type: 'color', icon: 'palette', description: 'random description', admin: user)
+Property.create(property_type: 'anatomy', icon: 'walking', description: 'random description', admin: user)
+Property.create(property_type: 'story', icon: 'book', description: 'random description', admin: user)
