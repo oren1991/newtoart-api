@@ -5,7 +5,7 @@ class SourcesService
   end
 
   def run
-    "https://picsum.photos/200/300"
+    "https://picsum.photos/1000/600"
   end
 end
 

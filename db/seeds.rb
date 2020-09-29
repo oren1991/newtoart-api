@@ -21,3 +21,16 @@ Property.create(property_type: 'composition', icon: 'theater-masks', description
 Property.create(property_type: 'color', icon: 'palette', description: 'random description', admin: user)
 Property.create(property_type: 'anatomy', icon: 'walking', description: 'random description', admin: user)
 Property.create(property_type: 'story', icon: 'book', description: 'random description', admin: user)
+
+
+50.times.each do
+  Content.create(
+      title: "My new content",
+      description: "This is a description kfaédfjkaélk jfaklsdj fkladsj flaksjdflakjsdf éladjs féasd adséalksdfj élaksdjf élkadjsflékaslf ",
+      source_type: "source_type",
+      media_hash: "random",
+      artist: user2,
+      properties: Property.all
+  )
+end
+
