@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_203304) do
   create_table "contents_properties", force: :cascade do |t|
     t.bigint "property_id"
     t.bigint "content_id"
+    t.integer "value"
     t.index ["content_id"], name: "index_contents_properties_on_content_id"
     t.index ["property_id"], name: "index_contents_properties_on_property_id"
   end

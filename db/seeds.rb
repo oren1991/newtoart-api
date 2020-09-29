@@ -24,7 +24,7 @@ Property.create(property_type: 'story', icon: 'book', description: 'random descr
 
 
 50.times.each do
-  Content.create(
+  c = Content.create(
       title: "My new content",
       description: "This is a description kfaédfjkaélk jfaklsdj fkladsj flaksjdflakjsdf éladjs féasd adséalksdfj élaksdjf élkadjsflékaslf ",
       source_type: "source_type",
@@ -32,5 +32,9 @@ Property.create(property_type: 'story', icon: 'book', description: 'random descr
       artist: user2,
       properties: Property.all
   )
+  c.contents_properties.each do |cp|
+    cp.value = rand(6)
+    cp.save!
+  end
 end
 
