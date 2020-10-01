@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(name: 'Hello User')
-user2 = User.create(name: 'World User')
+user = User.create(name: 'Hello User', email: 'random@mail.com', password: 'hello')
+user2 = User.create(name: 'World User', email: 'random@mail2.com', password: 'hello2')
 role = Role.create(name: 'Admin', admin: true)
 like = Like.create(likable: user2)
 user.roles << role
