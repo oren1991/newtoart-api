@@ -12,7 +12,7 @@ class Content < ApplicationRecord
   end
 
   def generate_src
-    SourcesService.new(source_type: source_type, media_hash: media_hash).run
+    SourcesService.new(id: id, source_type: source_type, media_hash: media_hash).run
   end
 
 end

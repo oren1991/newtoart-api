@@ -1,11 +1,12 @@
 class SourcesService
-  def initialize(source_type:, media_hash:)
+  def initialize(id:, source_type:, media_hash:)
+    @id = id
     @source_type = source_type
     @media_hash = media_hash
   end
 
   def run
-    "https://picsum.photos/1000/#{rand(600...1200)}?ts=#{rand(30000)}"
+    "https://picsum.photos/id/#{@id}/1000/#{rand(600...1200)}?ts=#{rand(30000)}"
   end
 end
 

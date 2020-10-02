@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       token = encode_token({user_id: @current_user.id})
       render json: {user: @current_user, token: token}
     else
-      render json: {error: "Signup invalid"}
+      render json: {error: "Signup invalid"}, status: 404
     end
   end
 
@@ -19,14 +19,15 @@ class UsersController < ApplicationController
 
     if @current_user && @current_user.authenticate(params[:password])
       token = encode_token({user_id: @current_user.id})
-      render json: {user: @current_user, token: token}
+      login_success_result = OpenStruct.new(user: @current_user, token: token)
+      render json: login_success_result, status: 200, serializer: LoginSuccessSerializer
     else
-      render json: {error: "Invalid username or password"}
+      render json: {error: "Invalid username or password"}, status: 404
     end
   end
 
   def auto_login
-    render json: @current_user
+    render json: @current_user, status: 200
   end
 
   private

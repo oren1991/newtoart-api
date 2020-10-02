@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :likes, as: :likable
   has_many :liked, class_name: 'Like'
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
 
