@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   def create
     @current_user = User.create(user_params)
     if @current_user.valid?
-      token = encode_token({user_id: @current_user.id})
-      render json: {user: @current_user, token: token}
+      @token = encode_token({user_id: @current_user.id})
+      render json: login_success_result, serializer: LoginSuccessSerializer
     else
       render json: {error: "Signup invalid"}, status: 404
     end
