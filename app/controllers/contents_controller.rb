@@ -3,20 +3,20 @@ class ContentsController < ApplicationController
   before_action :fetch_content, only: :show
 
   def index
-    render json: { media: @contents }, status: 200
+    render json: @contents, serializers: ContentIndexSerializer
   end
 
   def show
-    render json: { media: @content }, status: 200
+    render json: @content, serializer: ContentSerializer
   end
 
   private
 
   def fetch_contents
-    @contents = Content.all.as_json(include:  [:artist, contents_properties: {include: :property}] )
+    @contents = Content.all
   end
 
   def fetch_content
-    @content = Content.find_by(id: params[:id]).as_json(include:  [:artist, contents_properties: {include: :property}] )
+    @content = Content.find_by(id: params[:id])
   end
 end

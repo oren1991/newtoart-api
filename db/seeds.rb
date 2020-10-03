@@ -14,13 +14,13 @@ user.roles << role
 user2.roles << role
 user.liked << like
 
-Property.create(property_type: 'form', icon: 'shapes', description: 'random description', admin: user)
-Property.create(property_type: 'perpective', icon: 'cube', description: 'random description', admin: user)
-Property.create(property_type: 'values', icon: 'adjust', description: 'random description', admin: user)
-Property.create(property_type: 'composition', icon: 'theater-masks', description: 'random description', admin: user)
-Property.create(property_type: 'color', icon: 'palette', description: 'random description', admin: user)
-Property.create(property_type: 'anatomy', icon: 'walking', description: 'random description', admin: user)
-Property.create(property_type: 'story', icon: 'book', description: 'random description', admin: user)
+Property.create(name: 'form', icon: 'shapes', description: 'random description', admin: user)
+Property.create(name: 'perpective', icon: 'cube', description: 'random description', admin: user)
+Property.create(name: 'values', icon: 'adjust', description: 'random description', admin: user)
+Property.create(name: 'composition', icon: 'theater-masks', description: 'random description', admin: user)
+Property.create(name: 'color', icon: 'palette', description: 'random description', admin: user)
+Property.create(name: 'anatomy', icon: 'walking', description: 'random description', admin: user)
+Property.create(name: 'story', icon: 'book', description: 'random description', admin: user)
 
 
 50.times.each do
@@ -37,4 +37,6 @@ Property.create(property_type: 'story', icon: 'book', description: 'random descr
     cp.save!
   end
 end
+
+Content.find(1).reviews.create(review_text: "this is a random review", reviewer: user, properties: Property.all)
 

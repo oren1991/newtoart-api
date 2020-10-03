@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_10_01_053150) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.string "property_type"
+    t.string "name"
     t.string "description"
     t.string "icon"
     t.bigint "admin_id"
@@ -64,14 +64,17 @@ ActiveRecord::Schema.define(version: 2020_10_01_053150) do
   create_table "reviews", force: :cascade do |t|
     t.text "review_text"
     t.bigint "reviewer_id"
+    t.bigint "content_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["content_id"], name: "index_reviews_on_content_id"
     t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
   create_table "reviews_properties", force: :cascade do |t|
     t.bigint "review_id"
     t.bigint "property_id"
+    t.integer "value"
     t.index ["property_id"], name: "index_reviews_properties_on_property_id"
     t.index ["review_id"], name: "index_reviews_properties_on_review_id"
   end

@@ -18,8 +18,7 @@ class UsersController < ApplicationController
     @current_user = User.find_by(email: params[:email])
 
     if @current_user && @current_user.authenticate(params[:password])
-      token = encode_token({user_id: @current_user.id})
-      login_success_result = OpenStruct.new(user: @current_user, token: token)
+      @token = encode_token({user_id: @current_user.id})
       render json: login_success_result, status: 200, serializer: LoginSuccessSerializer
     else
       render json: {error: "Invalid username or password"}, status: 404
@@ -27,12 +26,16 @@ class UsersController < ApplicationController
   end
 
   def auto_login
-    render json: @current_user, status: 200
+    render json: login_success_result, status: 200, serializer: LoginSuccessSerializer
   end
 
   private
 
   def user_params
     params.permit(:name, :password, :email)
+  end
+
+  def login_success_result
+    OpenStruct.new(user: @current_user, token: @token)
   end
 end
