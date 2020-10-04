@@ -1,4 +1,6 @@
 class Review < ApplicationRecord
+  validates :reviewer, uniqueness: { scope: :content, message: 'has already reviewed this content' }
+
   belongs_to :content
   belongs_to :reviewer, class_name: 'User'
   has_many :reviews_properties, class_name: 'ReviewsProperties'
