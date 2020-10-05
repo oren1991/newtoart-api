@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :fetch_content_comments, only: :index, if: :content_id?
 
   def index
-    render json: @comments, status: 200, serializer: CommentSerializer
+    render json: @comments, status: 200, serializers: CommentSerializer
   end
 
   def show

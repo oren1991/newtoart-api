@@ -13,7 +13,7 @@ class ContentsController < ApplicationController
   private
 
   def fetch_contents
-    @contents = Content.all
+    @contents = Content.includes(:properties, :artist).all
   end
 
   def fetch_content
