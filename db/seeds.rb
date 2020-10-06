@@ -38,5 +38,5 @@ Property.create(name: 'story', icon: 'book', description: 'random description', 
   end
 end
 
-Content.find(1).reviews.create(review_text: "this is a random review", reviewer: user, properties: Property.all)
+Content.first.reviews.create(review_text: "this is a random review", reviewer: user, properties: Property.all)
 

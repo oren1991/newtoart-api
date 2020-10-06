@@ -1,4 +1,5 @@
 class ContentsController < ApplicationController
+  before_action :authorize, only: [:create]
   before_action :fetch_contents, only: :index
   before_action :fetch_content, only: :show
 
