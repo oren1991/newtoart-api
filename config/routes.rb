@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   post '/login', to: "users#login"
   post '/signup', to: "users#create"
   get '/auto_login', to: "users#auto_login"
+  resource :s3, only: [] do
+    member do
+      post :post_sign
+      get :get_sign
+    end
+  end
 end

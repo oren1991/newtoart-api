@@ -48,6 +48,22 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
+    aws-eventstream (1.1.0)
+    aws-partitions (1.380.0)
+    aws-sdk-core (3.109.1)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.239.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.39.0)
+      aws-sdk-core (~> 3, >= 3.109.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.83.0)
+      aws-sdk-core (~> 3, >= 3.109.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.2.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
@@ -57,12 +73,17 @@ GEM
       activesupport
     concurrent-ruby (1.1.7)
     crass (1.0.6)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.9.0)
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    jmespath (1.4.0)
     jsonapi-renderer (0.2.2)
     jwt (2.2.2)
     listen (3.1.5)
@@ -145,9 +166,11 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  aws-sdk-s3
   bcrypt
   bootsnap (>= 1.1.0)
   byebug
+  dotenv-rails
   jwt
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)

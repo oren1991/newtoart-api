@@ -10,6 +10,12 @@ class ContentsController < ApplicationController
     render json: @content, serializer: ContentSerializer
   end
 
+  def create
+    result = ContentUpdateService.new(content: Content.new, params: params, current_user: @current_user).run
+    render json: result, status: result.success ? 200 : 412, serializer: ContentServiceResultSerializer, include: "comment,comment.commenter"
+
+  end
+
   private
 
   def fetch_contents

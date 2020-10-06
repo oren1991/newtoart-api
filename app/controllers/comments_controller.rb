@@ -16,7 +16,6 @@ class CommentsController < ApplicationController
   def create
     result = CommentUpdateService.new(comment: Comment.new, params: params, current_user: @current_user).run
     render json: result, status: result.success ? 200 : 412, serializer: CommentServiceResultSerializer, include: "comment,comment.commenter"
-
   end
 
   private

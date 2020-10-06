@@ -12,6 +12,8 @@ gem 'bcrypt'
 gem 'rack-cors'
 gem 'jwt'
 gem 'active_model_serializers'
+gem 'aws-sdk-s3'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
