@@ -83,5 +83,7 @@ test:
 production:
   <<: *default
   database: newtoart-api_production
-  username: newtoart-api
-  password: <%= ENV['NEWTOART-API_DATABASE_PASSWORD'] %>
+  host: newtoart-pg.cmgczeaicp18.us-west-1.rds.amazonaws.com
+  port: 5432
+  username: newtoart_api
+  password: <%= ENV['NEWTOART_API_DATABASE_PASSWORD'] %>

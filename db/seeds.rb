@@ -23,9 +23,9 @@ Property.create(name: 'anatomy', icon: 'walking', description: 'random descripti
 Property.create(name: 'story', icon: 'book', description: 'random description', admin: user)
 
 
-50.times.each do
+20.times.each do
   c = Content.create(
-      title: "My new content",
+      title: "My new DUMMY content",
       description: "This is a description kfaédfjkaélk jfaklsdj fkladsj flaksjdflakjsdf éladjs féasd adséalksdfj élaksdjf élkadjsflékaslf ",
       source_type: "source_type",
       media_hash: "random",
