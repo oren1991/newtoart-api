@@ -20,7 +20,8 @@ class ReviewUpdateService
     @review.update(
         reviewer: @current_user,
         content: Content.find(@params[:content_id]),
-        review_text: @params[:review_text]
+        review_text: @params[:review_text],
+        media_hash: URI.decode(@params[:image_name])
     )
     create_property_values
   end

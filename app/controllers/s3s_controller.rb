@@ -3,7 +3,7 @@ class S3sController < ApplicationController
 
   def post_sign
     s3 = Aws::S3::Resource.new
-    obj = s3.bucket('newtoart-development').presigned_post(key: "#{@current_user.id}/#{random_string}", success_action_status: '201')
+    obj = s3.bucket('newtoart-development').presigned_post(key: "#{@current_user.id}/#{params[:content]}/#{random_string}", success_action_status: '201')
     render json: {signature: obj.fields, postEndpoint: obj.url}
   end
 

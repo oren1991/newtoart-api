@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_053150) do
+ActiveRecord::Schema.define(version: 2020_10_20_061222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_10_01_053150) do
     t.bigint "content_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "media_hash"
     t.index ["content_id"], name: "index_reviews_on_content_id"
     t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
