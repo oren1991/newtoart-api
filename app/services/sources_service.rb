@@ -7,6 +7,7 @@ class SourcesService
 
   def run
     if @source_type == 's3'
+      return '' unless @media_hash
       s3 = Aws::S3::Resource.new
       return s3.bucket('newtoart-development').object(@media_hash).presigned_url(:get)
     end
