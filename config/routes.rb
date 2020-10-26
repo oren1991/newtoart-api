@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :properties
   resources :users
+  resources :instagram_posts
   post '/login', to: "users#login"
   post '/signup', to: "users#create"
   get '/auto_login', to: "users#auto_login"

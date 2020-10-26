@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_061222) do
+ActiveRecord::Schema.define(version: 2020_10_26_073927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 2020_10_20_061222) do
     t.integer "value"
     t.index ["content_id"], name: "index_contents_properties_on_content_id"
     t.index ["property_id"], name: "index_contents_properties_on_property_id"
+  end
+
+  create_table "instagram_posts", force: :cascade do |t|
+    t.string "link"
+    t.string "img_src"
+    t.text "caption"
+    t.string "instagram_username"
+    t.bigint "curator_id"
+    t.bigint "reviewer_id"
+    t.index ["curator_id"], name: "index_instagram_posts_on_curator_id"
+    t.index ["reviewer_id"], name: "index_instagram_posts_on_reviewer_id"
   end
 
   create_table "likes", force: :cascade do |t|
