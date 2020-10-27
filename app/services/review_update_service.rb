@@ -19,7 +19,7 @@ class ReviewUpdateService
   def update_review
     @review.update(
         reviewer: @current_user,
-        content: Content.find(@params[:content_id]),
+        reviewable: reviewable,
         review_text: @params[:review_text],
         media_hash: URI.decode(@params[:image_name])
     )
@@ -34,5 +34,15 @@ class ReviewUpdateService
           value: rp[:value]
       )
     end
+  end
+
+  def reviewable
+    reviewable_classes.each do |class_string|
+      return class_string.capitalize.find(@params["#{class_string.underscore}_id"]) if @params["#{class_string.underscore}_id"]
+    end
+  end
+
+  def reviewable_classes
+    %w[Content InstagramPost]
   end
 end
