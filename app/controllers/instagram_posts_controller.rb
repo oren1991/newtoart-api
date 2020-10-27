@@ -7,7 +7,7 @@ class InstagramPostsController < ApplicationController
 
   def create
     result = InstagramUpdateService.new(instagram_post: InstagramPost.new, params: params, current_user: @current_user).run
-    render json: result, status: result.success ? 200 : 412, serializer: ContentServiceResultSerializer, include: "reviewer, curator"
+    render json: result, status: result.success ? 200 : 412, serializer: InstagramServiceResultSerializer, include: "instagram_post,instagram_post.reviewer,instagram_post.curator"
   end
 
   private

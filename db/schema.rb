@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_10_26_073927) do
 
   create_table "instagram_posts", force: :cascade do |t|
     t.string "link"
-    t.string "img_src"
+    t.string "media_hash"
     t.text "caption"
     t.string "instagram_username"
     t.bigint "curator_id"

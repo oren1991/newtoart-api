@@ -13,14 +13,14 @@ class InstagramUpdateService
       success = @post.save
       result = @post
     end
-    ::OpenStruct.new(comment: result, success: success, message: success ? "Success" : @post.errors.full_messages)
+    ::OpenStruct.new(instagram_post: result, success: success, message: success ? "Success" : @post.errors.full_messages)
   end
 
   def update_instagram_post
     @post.update(
         curator: @current_user,
         link: @params[:link],
-        img_src: @params[:img_src],
+        media_hash: URI.decode(@params[:media_hash]),
         caption: @params[:caption],
         instagram_username: @params[:instagram_username],
     )
