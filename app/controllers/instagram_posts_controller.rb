@@ -1,8 +1,13 @@
 class InstagramPostsController < ApplicationController
-  before_action :fetch_properties, only: [:index]
+  before_action :fetch_instagram_posts, only: [:index]
+  before_action :fetch_post, only: [:show]
 
   def index
-    render json: @properties, serializers: InstagramPostSerializer
+    render json: @posts, serializers: InstagramPostSerializer
+  end
+
+  def show
+    render json: @post, serializer: InstagramPostSerializer
   end
 
   def create
@@ -12,7 +17,11 @@ class InstagramPostsController < ApplicationController
 
   private
 
-  def fetch_properties
+  def fetch_instagram_posts
     @posts = InstagramPost.all
+  end
+
+  def fetch_post
+    @post = InstagramPost.find_by(id: params[:id])
   end
 end

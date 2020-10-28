@@ -38,7 +38,7 @@ class ReviewUpdateService
 
   def reviewable
     reviewable_classes.each do |class_string|
-      return class_string.capitalize.find(@params["#{class_string.underscore}_id"]) if @params["#{class_string.underscore}_id"]
+      return class_string.constantize.find(@params["#{class_string.underscore}_id"]) if @params["#{class_string.underscore}_id"]
     end
   end
 

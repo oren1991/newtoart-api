@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-  validates :reviewer, uniqueness: { scope: :content, message: 'has already reviewed this content' }
+  validates :reviewer, uniqueness: { scope: [:reviewable_id, :reviewable_type], message: 'has already reviewed this content' }
 
   belongs_to :reviewable, polymorphic: true
   belongs_to :reviewer, class_name: 'User'

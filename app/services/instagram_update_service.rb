@@ -21,6 +21,7 @@ class InstagramUpdateService
         curator: @current_user,
         link: @params[:link],
         media_hash: URI.decode(@params[:media_hash]),
+        source_type: 's3',
         caption: @params[:caption],
         instagram_username: @params[:instagram_username],
     )
