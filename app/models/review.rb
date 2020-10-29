@@ -7,4 +7,8 @@ class Review < ApplicationRecord
   has_many :properties, through: :reviews_properties
   has_many :comments, as: :commentable
   has_many :likes, as: :likable
+
+  def self.reviewable_classes
+    %w[Content InstagramPost]
+  end
 end

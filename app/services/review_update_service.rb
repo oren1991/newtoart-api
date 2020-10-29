@@ -1,6 +1,7 @@
 class ReviewUpdateService
-  def initialize(review:, params:, current_user:)
+  def initialize(review:, reviewable:, params:, current_user:)
     @review = review
+    @reviewable = reviewable
     @params = params
     @current_user = current_user
   end
@@ -19,7 +20,7 @@ class ReviewUpdateService
   def update_review
     @review.update(
         reviewer: @current_user,
-        reviewable: reviewable,
+        reviewable: @reviewable,
         review_text: @params[:review_text],
         media_hash: URI.decode(@params[:image_name])
     )
@@ -34,15 +35,5 @@ class ReviewUpdateService
           value: rp[:value]
       )
     end
-  end
-
-  def reviewable
-    reviewable_classes.each do |class_string|
-      return class_string.constantize.find(@params["#{class_string.underscore}_id"]) if @params["#{class_string.underscore}_id"]
-    end
-  end
-
-  def reviewable_classes
-    %w[Content InstagramPost]
   end
 end
