@@ -28,8 +28,6 @@ class ReviewsController < ApplicationController
   end
 
   def reviewable
-    @reviewable || Review.reviewable_classes.each do |class_string|
-      return @reviewable = class_string.constantize.find(params["#{class_string.underscore}_id"]) if params["#{class_string.underscore}_id"]
-    end
+    @reviewable || Review.reviewable_classes[params[:reviewable_type]].find_by(id: params[:reviewable_id])
   end
 end

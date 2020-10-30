@@ -9,6 +9,9 @@ class Review < ApplicationRecord
   has_many :likes, as: :likable
 
   def self.reviewable_classes
-    %w[Content InstagramPost]
+    {
+        "content" => Content,
+        "instagram_post" => InstagramPost
+    }
   end
 end
