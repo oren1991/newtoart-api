@@ -18,7 +18,7 @@ class InstagramPostsController < ApplicationController
   private
 
   def fetch_instagram_posts
-    @posts = InstagramPost.all
+    @posts = InstagramPost.includes(:reviews).where(reviews: {id: nil})
   end
 
   def fetch_post

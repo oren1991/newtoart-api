@@ -2,9 +2,14 @@ class InstagramPostSerializer < ActiveModel::Serializer
   attributes :id, :link, :media_hash, :caption, :instagram_username, :src, :loaded
   has_one :curator, serializer: UserSerializer
   has_one :reviewer, serializer: UserSerializer
+  has_many :properties, serializer: PropertyIndexSerializer
 
   def loaded
     false
+  end
+
+  def properties
+    Property.all
   end
 
   def src

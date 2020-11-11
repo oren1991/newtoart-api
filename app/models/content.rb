@@ -5,4 +5,8 @@ class Content < ApplicationRecord
   has_many :reviews, class_name: 'Review', as: :reviewable
   belongs_to :artist, class_name: 'User'
   has_many :likes, as: :likable
+
+  def caption
+    description
+  end
 end

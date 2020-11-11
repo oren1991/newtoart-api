@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :fetch_reviews, only: :index, if: :reviewable
+  before_action :fetch_reviews, only: :index
   before_action :fetch_review, only: [:update]
 
   def index
@@ -19,8 +19,12 @@ class ReviewsController < ApplicationController
   private
 
   def fetch_reviews
-    @reviews = Review.where(reviewable: reviewable)
-    @reviews.where(reviewer: @current_user) if params[:current_user] == 'true'
+    if params[:all]
+      @reviews = Review.where(reviewable_type: params[:reviewable_type].camelize)
+    else
+      @reviews = Review.where(reviewable: reviewable)
+      @reviews.where(reviewer: @current_user) if params[:current_user] == 'true'
+    end
   end
 
   def fetch_review
@@ -28,6 +32,6 @@ class ReviewsController < ApplicationController
   end
 
   def reviewable
-    @reviewable || Review.reviewable_classes[params[:reviewable_type]].find_by(id: params[:reviewable_id])
+    @reviewable || Review.reviewable_classes[params[:reviewable_type]].find_by(id: params[:reviewable_id]) unless params[:all]
   end
 end
