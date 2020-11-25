@@ -1,6 +1,6 @@
 class InstagramPostsController < ApplicationController
   before_action :fetch_instagram_posts, only: [:index]
-  before_action :fetch_post, only: [:show]
+  before_action :fetch_post, only: [:show, :destroy]
 
   def index
     render json: @posts, serializers: InstagramPostSerializer
@@ -13,6 +13,11 @@ class InstagramPostsController < ApplicationController
   def create
     result = InstagramUpdateService.new(instagram_post: InstagramPost.new, params: params, current_user: @current_user).run
     render json: result, status: result.success ? 200 : 412, serializer: InstagramServiceResultSerializer, include: "instagram_post,instagram_post.reviewer,instagram_post.curator"
+  end
+
+  def destroy
+    @post.destroy
+    render json: {message: 'Post deleted', success: true }
   end
 
   private
